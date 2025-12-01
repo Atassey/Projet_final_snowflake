@@ -1,0 +1,8 @@
+CREATE OR REPLACE TABLE stage.order_items AS
+SELECT 
+    SEQ4()+1 AS id,
+    UNIFORM(1,12000000,RANDOM()) AS order_id,
+    UNIFORM(1,3000,RANDOM()) AS product_id,
+    UNIFORM(1,5,RANDOM()) AS quantity,
+    ROUND(UNIFORM(10,500,RANDOM()),2) AS unit_price
+FROM TABLE(GENERATOR(ROWCOUNT => 1000000));
